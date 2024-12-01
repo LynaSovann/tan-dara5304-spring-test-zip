@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tan-dara5304-spring-test-zip-service
+spec:
+  type: NodePort
+  selector:
+    app: tan-dara5304-spring-test-zip
+  ports:
+    - protocol: TCP
+      port: 8303
+      targetPort: 8080
