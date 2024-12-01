@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tan-dara5304-spring-test-zip-certificate
+  namespace: tan-dara5304-spring-test-zip
+spec:
+  secretName: tan-dara5304-spring-test-zip-secret-tls
+  commonName: tan-dara5304-spring-test-zip.assessify.org
+  dnsNames:
+  - tan-dara5304-spring-test-zip.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
