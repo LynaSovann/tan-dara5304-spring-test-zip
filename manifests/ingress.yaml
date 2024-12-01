@@ -1,0 +1,30 @@
+ apiVersion: networking.k8s.io/v1
+ kind: Ingress
+ metadata:
+   name: tan-dara5304-spring-test-zip-https-ingress
+   namespace: tan-dara5304-spring-test-zip
+   annotations:
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/proxy-body-size: "5g"    
+     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+     nginx.ingress.kubernetes.io/rewrite-target: /
+ spec:
+   ingressClassName: nginx
+   tls:
+     - hosts:
+         - tan-dara5304-spring-test-zip.assessify.org
+       secretName: tan-dara5304-spring-test-zip-secret-tls
+   rules:
+     - host: tan-dara5304-spring-test-zip.assessify.org
+       http:
+         paths:
+           - path: /
+             pathType: Prefix
+             backend:
+               service:
+                 name: tan-dara5304-spring-test-zip-service
+                 port:
+                   number: 8303
+ 
